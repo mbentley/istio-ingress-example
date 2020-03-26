@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  generation: 1
+  name: test-gateway2
+  selfLink: /apis/networking.istio.io/v1alpha3/namespaces/demo/gateways/test-gateway2
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - win2-envoy.ea.demo.dckr.org
+    port:
+      name: http80
+      number: 80
+      protocol: HTTP
