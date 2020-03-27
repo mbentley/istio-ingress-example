@@ -6,36 +6,36 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnetcoreapp
+  name: demoapp
   namespace: demo
 spec:
   replicas: 2
   selector:
     matchLabels:
-      dotnetcoreapp: dotnetcoreapp
+      demoapp: demoapp
   template:
     metadata:
       labels:
-        dotnetcoreapp: dotnetcoreapp
+        demoapp: demoapp
     spec:
       containers:
-        - name: dotnetcoreapp
-          image: dtr.demo.dckr.org/demo/dotnetdemo:latest
+        - name: demoapp
+          image: mbentley/tomcat7:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 8080
       nodeSelector:
-        beta.kubernetes.io/os: windows
+        beta.kubernetes.io/os: linux
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnetcoreapp
+  name: demoapp
   namespace: demo
 spec:
   selector:
-    dotnetcoreapp: dotnetcoreapp
+    demoapp: demoapp
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
+    port: 8080
+    targetPort: 8080

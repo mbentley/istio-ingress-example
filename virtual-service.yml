@@ -2,19 +2,19 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   generation: 1
-  name: win2
-  selfLink: /apis/networking.istio.io/v1alpha3/namespaces/demo/virtualservices/win2
+  name: demoapp-vs
+  namespace: demo
 spec:
   gateways:
-  - test-gateway2
+  - gw1
   hosts:
-  - win2-envoy.ea.demo.dckr.org
+  - demoapp-envoy.ea.demo.dckr.org
   http:
   - match:
     - uri:
         prefix: /
     route:
     - destination:
-        host: dotnetcoreapp
+        host: demoapp
         port:
-          number: 80
+          number: 8080
