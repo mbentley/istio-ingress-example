@@ -2,21 +2,21 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   generation: 1
-  name: demoapp-vs
-  namespace: demo
+  name: demoapp-win-vs
+  namespace: demo-win
 spec:
   gateways:
   - gw1
   hosts:
-  - demoapp.istio.ea.demo.dckr.org
-  - demoapp.k8s.ea.demo.dckr.org
-  - demoapp.envoy.ea.demo.dckr.org
+  - demoapp-win.istio.ea.demo.dckr.org
+  - demoapp-win.k8s.ea.demo.dckr.org
+  - demoapp-win.envoy.ea.demo.dckr.org
   http:
   - match:
     - uri:
         prefix: /
     route:
     - destination:
-        host: demoapp
+        host: demoapp-win
         port:
-          number: 8080
+          number: 80

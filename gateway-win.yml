@@ -3,15 +3,15 @@ kind: Gateway
 metadata:
   generation: 1
   name: gw1
-  namespace: demo
+  namespace: demo-win
 spec:
   selector:
     istio: ingressgateway
   servers:
   - hosts:
-    - demoapp.istio.ea.demo.dckr.org
-    - demoapp.k8s.ea.demo.dckr.org
-    - demoapp.envoy.ea.demo.dckr.org
+    - demoapp-win.istio.ea.demo.dckr.org
+    - demoapp-win.k8s.ea.demo.dckr.org
+    - demoapp-win.envoy.ea.demo.dckr.org
     port:
       name: http80
       number: 80
